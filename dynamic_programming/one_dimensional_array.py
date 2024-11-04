@@ -1,7 +1,12 @@
 
 #一只青蛙一次可以跳上1级台阶，也可以跳上2级。求该青蛙跳上一个n级的台阶总共有多少种跳法。
 def frog_jump(n):
-    
+    dp = [0] * (n + 1)
+    dp[0] = 1
+    dp[1] = 1
+    for i in range(2,n+1):
+        dp[i] = dp[i-1] + dp[i-2]
+    return dp[n]
 
 
 # 给你一个整数数组 nums ，请你找出一个具有最大和的连续子数组(子数组最少包含一个元素)，返回其最大和。
@@ -26,10 +31,10 @@ def max_subarray_nums(nums):
 
 if __name__ == '__main__':
     # 示例
-    # print(frog_jump(5))  # 输出 8
+    print(frog_jump(5))  # 输出 8
 
-    nums = [-2, 1, -3, 4, -1, 2, 1, -5, 4]
-    print(max_subarray(nums))  # 输出 6
-
-    nums = [-2, 1, -3, 4, -1, 2, 1, -5, 4,-2,-7,-8]
-    print(max_subarray_nums(nums))  # 输出 6 (6, [4, -1, 2, 1])
+    # nums = [-2, 1, -3, 4, -1, 2, 1, -5, 4]
+    # print(max_subarray(nums))  # 输出 6
+    #
+    # nums = [-2, 1, -3, 4, -1, 2, 1, -5, 4,-2,-7,-8]
+    # print(max_subarray_nums(nums))  # 输出 6 (6, [4, -1, 2, 1])
